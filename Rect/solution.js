@@ -1,4 +1,10 @@
 const fs = require('fs')
+
+if (!process.argv[2] || !process.argv[3]) {
+  console.log('Usage: node solution.js rect1.txt rect2.txt')
+  return
+}
+
 const MATRIX = fs.readFileSync('./' + process.argv[2], 'utf-8').split('\n');
 const NEO = fs.readFileSync('./' + process.argv[3], 'utf-8').split('\n');
 
@@ -6,7 +12,7 @@ let NEOWidth = NEO.length;
 let MATRIXWidth = MATRIX.length;
 let MATRIXHeight = MATRIX[0].length;
 
-let findRect = (indexMATRIX, indexNEO) => {
+function findRect(indexMATRIX, indexNEO) {
   if (indexMATRIX >= MATRIXWidth) return;
 
   for (let index = 0; index < MATRIXHeight - 2; index++) {
